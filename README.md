@@ -29,7 +29,10 @@ make BOARDS=Pynq-Z1
 ```bash
 Get:1 http://ports.ubuntu.com/ubuntu-ports bionic InRelease [242 kB]
 Err:1 http://ports.ubuntu.com/ubuntu-ports bionic InRelease
-  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY the_key
+```
+```bash
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys the_key
 ```
 
 ## Step 3 - Play with an existing SD image for the Zedboard
