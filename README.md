@@ -15,20 +15,12 @@ Based on https://pynq.readthedocs.io/en/latest/pynq_sd_card.html, we have two op
 
 ### Ubuntu 18 LTS + 2019.1 tools
 ```bash
-git clone https://github.com/Xilinx/PYNQ
-cd PYNQ
-git checkout image_v2.5
-```
-You need to add the Docker repo in `sdbuild/scripts/setup_host.sh`:
-```bash
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-```
-Otherwise, just clone my fork:
-```bash
+# Fork add the Docker repo which was missing
 git clone https://github.com/pcotret/PYNQ
 cd PYNQ
 git checkout image_v2.5
+cd sdbuild
+make BOARDS=Pynq-Z1
 ```
 
 ## Step 3 - Play with an existing SD image for the Zedboard
