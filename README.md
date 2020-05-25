@@ -9,8 +9,6 @@ http://www.pynq.io/
 - Tutorial: https://pynq.readthedocs.io/en/latest/getting_started/pynq_z1_setup.html
 - SD image: https://pynq.readthedocs.io/en/v2.5/getting_started/pynq_image.html
 
-**It works !**
-
 ## Step 2 - Recompile an image for the Pynq-Z1
 The idea is to verify that the workflow is OK for an existing board.
 Based on https://pynq.readthedocs.io/en/latest/pynq_sd_card.html, we have two options :
