@@ -11,7 +11,7 @@ http://www.pynq.io/
 The idea is to verify that the workflow is OK for an existing board.
 Based on https://pynq.readthedocs.io/en/latest/pynq_sd_card.html, we have two options :
 - Ubuntu 16 LTS, Xilinx 2018.2 tools for a [Pynq v2.3](https://github.com/Xilinx/PYNQ/tree/image_v2.3) image
-- Ubuntu 18 LTS, Xiinx 2019.1 tools for a [Pynq v2.5](https://github.com/Xilinx/PYNQ/tree/image_v2.5) image
+- Ubuntu 18 LTS, Xilinx 2019.1 tools for a [Pynq v2.5](https://github.com/Xilinx/PYNQ/tree/image_v2.5) image
 
 ## Step 3 - Play with an existing SD image for the Zedboard
 - Some are available there: https://onedrive.live.com/?authkey=%21AGHtA0NKDouVp6o&id=90CE8BEE59129AD0%2133068&cid=90CE8BEE59129AD0
