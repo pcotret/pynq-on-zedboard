@@ -24,6 +24,12 @@ You need to add the Docker repo in `sdbuild/scripts/setup_host.sh`:
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 ```
+Otherwise, just clone my fork:
+```bash
+git clone https://github.com/pcotret/PYNQ
+cd PYNQ
+git checkout image_v2.5
+```
 
 ## Step 3 - Play with an existing SD image for the Zedboard
 - Some are available there: https://onedrive.live.com/?authkey=%21AGHtA0NKDouVp6o&id=90CE8BEE59129AD0%2133068&cid=90CE8BEE59129AD0
