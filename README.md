@@ -17,7 +17,7 @@ Based on https://pynq.readthedocs.io/en/latest/pynq_sd_card.html, we have two op
 ```bash
 git clone https://github.com/Xilinx/PYNQ
 cd PYNQ
-git checkout image_v2.3
+git checkout image_v2.5
 ```
 You need to add the Docker repo in `sdbuild/scripts/setup_host.sh`:
 ```bash
