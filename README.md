@@ -35,7 +35,9 @@ Err:1 http://ports.ubuntu.com/ubuntu-ports bionic InRelease
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys the_key
 ```
 #### Issue with `crosstool-ng`
-http://crosstool-ng.github.io/docs/known-issues/
+- http://crosstool-ng.github.io/docs/known-issues/
+- https://discuss.pynq.io/t/pynq-2-5-ct-ng-build-error/1267
+
 
 ## Step 3 - Play with an existing SD image for the Zedboard
 - Some are available there: https://onedrive.live.com/?authkey=%21AGHtA0NKDouVp6o&id=90CE8BEE59129AD0%2133068&cid=90CE8BEE59129AD0
