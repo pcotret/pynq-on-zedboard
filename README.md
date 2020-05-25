@@ -25,7 +25,7 @@ cd sdbuild
 # Compile for the existing Pynq-Z1
 make BOARDS=Pynq-Z1
 ```
-#### FAQ
+#### Public key not verified
 ```bash
 Get:1 http://ports.ubuntu.com/ubuntu-ports bionic InRelease [242 kB]
 Err:1 http://ports.ubuntu.com/ubuntu-ports bionic InRelease
@@ -34,6 +34,8 @@ Err:1 http://ports.ubuntu.com/ubuntu-ports bionic InRelease
 ```bash
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys the_key
 ```
+#### Issue with `crosstool-ng`
+http://crosstool-ng.github.io/docs/known-issues/
 
 ## Step 3 - Play with an existing SD image for the Zedboard
 - Some are available there: https://onedrive.live.com/?authkey=%21AGHtA0NKDouVp6o&id=90CE8BEE59129AD0%2133068&cid=90CE8BEE59129AD0
