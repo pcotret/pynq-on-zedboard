@@ -1,5 +1,9 @@
 # pynq-on-zedboard
 http://www.pynq.io/
+- [x] Step 1 - Play with an existing SD image for the Pynq-Z1
+- [ ] Step 2 - Recompile an image for the Pynq-Z1
+- [ ] Step 3 - Play with an existing SD image for the Zedboard
+- [ ] Step 4 - Recompile an image for the Zedboard
 
 ## Step 1 - Play with an existing SD image for the Pynq-Z1
 - Tutorial: https://pynq.readthedocs.io/en/latest/getting_started/pynq_z1_setup.html
