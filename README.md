@@ -15,11 +15,12 @@ Based on https://pynq.readthedocs.io/en/latest/pynq_sd_card.html, we have two op
 
 ### Ubuntu 18 LTS + 2019.1 tools
 ```bash
-# Fork add the Docker repo which was missing
+# Fork adds the Docker repo which was missing
 git clone https://github.com/pcotret/PYNQ
 cd PYNQ
 git checkout image_v2.5
 cd sdbuild
+# Compile for the existing Pynq-Z1
 make BOARDS=Pynq-Z1
 ```
 
