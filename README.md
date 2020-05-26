@@ -17,7 +17,6 @@ Based on https://pynq.readthedocs.io/en/latest/pynq_sd_card.html, we have two op
 
 ### Ubuntu 18 LTS + 2019.1 tools
 ```bash
-# Fork adds the Docker repo which was missing
 git clone https://github.com/Xilinx/PYNQ
 cd PYNQ
 git checkout image_v2.5.2
