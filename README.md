@@ -24,9 +24,9 @@ cd sdbuild
 # Compile for the existing Pynq-Z1
 make BOARDS=Pynq-Z1
 ```
-In the first try, `make BOARDS=Pynq-Z1` generates images for all boards... If this case happens, just delete other board directories in `PYNQ/boards`
-
+- In the first try, `make BOARDS=Pynq-Z1` generates images for all boards... If this case happens, just delete other board directories in `PYNQ/boards`
 - `image_v2.5` branch is a bit buggy in its current state.
+
 #### Public key not verified
 ```bash
 Get:1 http://ports.ubuntu.com/ubuntu-ports bionic InRelease [242 kB]
