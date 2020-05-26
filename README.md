@@ -7,13 +7,13 @@ http://www.pynq.io/
 
 ## Step 1 - Play with an existing SD image for the Pynq-Z1
 - Tutorial: https://pynq.readthedocs.io/en/latest/getting_started/pynq_z1_setup.html
-- SD image: https://pynq.readthedocs.io/en/v2.5/getting_started/pynq_image.html
+- SD image: https://github.com/Xilinx/PYNQ/releases/tag/v2.5
 
 ## Step 2 - Recompile an image for the Pynq-Z1
 The idea is to verify that the workflow is OK for an existing board.
 Based on https://pynq.readthedocs.io/en/latest/pynq_sd_card.html, we have two options :
 - Ubuntu 16 LTS, Xilinx 2018.2 tools for a [Pynq v2.3](https://github.com/Xilinx/PYNQ/tree/image_v2.3) image
-- Ubuntu 18 LTS, Xilinx 2019.1 tools for a [Pynq v2.5](https://github.com/Xilinx/PYNQ/tree/image_v2.5) image
+- Ubuntu 18 LTS, Xilinx 2019.1 tools for a [Pynq v2.5.2](https://github.com/Xilinx/PYNQ/tree/image_v2.5.2) image
 
 ### Ubuntu 18 LTS + 2019.1 tools
 ```bash
