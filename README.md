@@ -18,13 +18,14 @@ Based on https://pynq.readthedocs.io/en/latest/pynq_sd_card.html, we have two op
 ### Ubuntu 18 LTS + 2019.1 tools
 ```bash
 # Fork adds the Docker repo which was missing
-git clone https://github.com/pcotret/PYNQ
+git clone https://github.com/Xilinx/PYNQ
 cd PYNQ
-git checkout image_v2.5
+git checkout image_v2.5.2
 cd sdbuild
 # Compile for the existing Pynq-Z1
 make BOARDS=Pynq-Z1
 ```
+- `image_v2.5` branch is a bit buggy in its current state.
 #### Public key not verified
 ```bash
 Get:1 http://ports.ubuntu.com/ubuntu-ports bionic InRelease [242 kB]
