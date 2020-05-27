@@ -33,42 +33,9 @@ for b in $boards ; do
 	build_bitstreams "$script_dir/boards" "$b"
 done
 ```
-- Generation still looking for Pynq-Z2 files during HDF generation... :cry:
+- Generation still looking for Pynq-Z2 files during HDF generation... as there are some dependencies with Pynq-Z2 in the [`build.sh`](https://github.com/pcotret/PYNQ/blob/image_v2.5.2/build.sh) script :cry:
 ```bash
-Built logictools successfully!
-
-make[1]: Leaving directory '/home/user/Desktop/PYNQ/sdbuild/build/PYNQ/boards/Pynq-Z1/logictools'
-make[1]: Entering directory '/home/user/Desktop/PYNQ/sdbuild/build/PYNQ/boards/sw_repo'
-usage: make [target]
-
-arguments:
-----------
-HDF:    relative/absolute path to the HDF file
-HW_DEF: name of the hardware project
-
-current configuration:
-----------------------
-make HDF=../Pynq-Z2/base/base.hdf
-     HW_DEF=hw_base
-
-xsdk -batch -source build_xsdk.tcl ../Pynq-Z2/base/base.hdf hw_base
-Error: HDF path ../Pynq-Z2/base/base.hdf does not exist.
-Makefile:22: recipe for target 'sdk_workspace' failed
-make[1]: *** [sdk_workspace] Error 1
-make[1]: Leaving directory '/home/user/Desktop/PYNQ/sdbuild/build/PYNQ/boards/sw_repo'
-+ unmount_special
-+ for fs in $fss
-+ sudo umount -l /home/user/Desktop/PYNQ/sdbuild/build/bionic.arm/proc
-[sudo] password for user: 
-+ for fs in $fss
-+ sudo umount -l /home/user/Desktop/PYNQ/sdbuild/build/bionic.arm/run
-+ for fs in $fss
-+ sudo umount -l /home/user/Desktop/PYNQ/sdbuild/build/bionic.arm/dev
-+ sudo umount -l /home/user/Desktop/PYNQ/sdbuild/build/bionic.arm/ccache
-+ rmdir /home/user/Desktop/PYNQ/sdbuild/build/bionic.arm/ccache
-Makefile:325: recipe for target '/home/user/Desktop/PYNQ/sdbuild/output/bionic.arm.2.5.img' failed
-make: *** [/home/user/Desktop/PYNQ/sdbuild/output/bionic.arm.2.5.img] Error 2
-user@matepc:~/Desktop/PYNQ/sdbuild$ 
+# build all the microblaze bsp's and binaries using Pynq-Z2's hdf
 ```
 
 #### Public key not verified
