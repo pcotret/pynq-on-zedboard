@@ -24,7 +24,15 @@ cd sdbuild
 # Compile for the existing Pynq-Z1
 make BOARDS=Pynq-Z1
 ```
-- In the first try, `make BOARDS=Pynq-Z1` generates images for all boards... If this case happens, just delete other board directories in `PYNQ/boards`
+- In order to optimize the overall compilation time for only one board, just delete other board directories in `PYNQ/boards`. This deletion must be pushed in the [PYNQ repository](https://github.com/pcotret/PYNQ/commit/948c9a27b796b14ee4b1812d500564ddfc218934). Otherwise, [build.sh](https://github.com/pcotret/PYNQ/blob/image_v2.5.2/build.sh) will build bitstreams for all boards available.
+```bash
+# build all bitstreams since they will be included in the sdist
+cd $script_dir/boards
+boards=`find . -maxdepth 2 -name '*.spec' -printf '%h\n' | cut -f2 -d"/"`
+for b in $boards ; do
+	build_bitstreams "$script_dir/boards" "$b"
+done
+```
 - `image_v2.5` branch is a bit buggy in its current state.
 
 #### Public key not verified
