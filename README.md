@@ -59,9 +59,13 @@ Let's look at the difference between `PYNQ/boards/Pynq-Z1/base/base.py` and `PYN
 
 ![diff](./img/diff.png)
 
-As you can see, Pynq-Z2 has more periphérals (look at `iop ***`, especially the Raspberry-Pi interface available **only** in the Pynq-Z2). And, unfortunately, the `build.sh` script will use Pynq-Z2 overlay for all boards instead of having something more "board-dependent". Two solutions:
+As you can see, Pynq-Z2 has more peripherals (look at `iop ***`, especially the Raspberry-Pi interface available **only** in the Pynq-Z2).
 
-- Modify the `build.sh` script to fit only the Pynq-Z1 in my fork.
+![rpi](./img/z2.png)
+
+And, unfortunately, the `build.sh` script will use Pynq-Z2 overlay for all boards instead of having something more "board-dependent". Two solutions:
+
+- Modify the `build.sh` script to fit only the Pynq-Z1 in my [fork](https://github.com/pcotret/PYNQ).
 - Take some time to make a clever `build.sh` which would generate BSPs for peripherals of a given board (would be a great PR in the main repo).
 
 #### Public key not verified
