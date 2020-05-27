@@ -33,8 +33,32 @@ for b in $boards ; do
 	build_bitstreams "$script_dir/boards" "$b"
 done
 ```
+#### Issues with the building script...
 - Still some errors in the script for building default overlays, microblaze bsp's and binaries...
 > ./build.sh: line 70: cd: bsp_iop_rpi_mb/iop_rpi_mb: No such file or directory :cry:
+
+> xsdk -batch -source build_xsdk.tcl ../Pynq-Z1/base/base.hdf hw_base
+> Starting xsdk. This could take few seconds... done
+> INFO: [Hsi 55-1698] elapsed time for repository loading 0 seconds
+> Creating new BSP bsp_iop_arduino_mb ...
+> /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+> BSP project 'bsp_iop_arduino_mb' created successfully.
+> /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+> Creating new BSP bsp_iop_pmoda_mb ...
+> /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+> BSP project 'bsp_iop_pmoda_mb' created successfully.
+> /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+> Creating new BSP bsp_iop_pmodb_mb ...
+> /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+> BSP project 'bsp_iop_pmodb_mb' created successfully.
+> /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+> Building '/bsp_iop_arduino_mb'
+Yes, `bsp_iop_rpi_mb` BSP project isn't generated...
+Let's look at the difference between `PYNQ/boards/Pynq-Z1/base/base.py` and `PYNQ/boards/Pynq-Z2/base/base.py`. Those files define the base overlay for both boards:
+
+As you can see, Pynq-Z2 has more periphérals (look at `iop ***`, especially the Raspberry-Pi interface available **only** in the Pynq-Z2). And, unfortunately, the `build.sh` script will use Pynq-Z2 overlay for all boards instead of having something more "board-dependent". Two solutions:
+- Modify the `build.sh` script to fit only the Pynq-Z1 in my fork.
+- Take some time to make a clever `build.sh` which would generate BSPs for peripherals of a given board (would be a great PR in the main repo).
 
 #### Public key not verified
 ```bash
