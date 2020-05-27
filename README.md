@@ -33,10 +33,8 @@ for b in $boards ; do
 	build_bitstreams "$script_dir/boards" "$b"
 done
 ```
-- Generation still looking for Pynq-Z2 files during HDF generation... as there are some dependencies with Pynq-Z2 in the [`build.sh`](https://github.com/pcotret/PYNQ/blob/image_v2.5.2/build.sh) script :cry:
-```bash
-# build all the microblaze bsp's and binaries using Pynq-Z2's hdf
-```
+- Still some errors in the script for building default overlays, microblaze bsp's and binaries...
+> ./build.sh: line 70: cd: bsp_iop_rpi_mb/iop_rpi_mb: No such file or directory :cry:
 
 #### Public key not verified
 ```bash
