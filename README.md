@@ -61,7 +61,6 @@ done
 ```
 - Still some errors in the script for building default overlays, microblaze bsp's and binaries...
 > ./build.sh: line 70: cd: bsp_iop_rpi_mb/iop_rpi_mb: No such file or directory :cry:
-
 > xsdk -batch -source build_xsdk.tcl ../Pynq-Z1/base/base.hdf hw_base
 >
 > Starting xsdk. This could take few seconds... done
@@ -93,8 +92,8 @@ done
 > /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
 >
 > Building '/bsp_iop_arduino_mb'
->
-> Yes, `bsp_iop_rpi_mb` BSP project isn't generated...
+
+Yes, `bsp_iop_rpi_mb` BSP project isn't generated...
 
 Let's look at the difference between `PYNQ/boards/Pynq-Z1/base/base.py` and `PYNQ/boards/Pynq-Z2/base/base.py`. Those files define the base overlay for both boards:
 
