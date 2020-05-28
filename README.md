@@ -1,7 +1,12 @@
 # pynq-on-zedboard
-http://www.pynq.io/
+> Gathering some notes/thoughts on my journey towards a PYNQ image for the Zedboard which is not supported by default.
+>
+> - Main ressource: https://pynq.readthedocs.io/en/latest/
+>
+> - Homemade generated images available here: https://drive.google.com/drive/folders/11lJLcf2pXwInf4wrj_IYowJZJRFcz-u2?usp=sharing
+
 - [x] Step 1 - Play with an existing SD image for the Pynq-Z1
-- [ ] Step 2 - Recompile an image for the Pynq-Z1
+- [x] Step 2 - Recompile an image for the Pynq-Z1
 - [ ] Step 3 - Play with an existing SD image for the Zedboard
 - [ ] Step 4 - Recompile an image for the Zedboard
 
@@ -13,17 +18,38 @@ http://www.pynq.io/
 The idea is to verify that the workflow is OK for an existing board.
 Based on https://pynq.readthedocs.io/en/latest/pynq_sd_card.html, we have two options :
 - Ubuntu 16 LTS, Xilinx 2018.2 tools for a [Pynq v2.3](https://github.com/Xilinx/PYNQ/tree/image_v2.3) image
-- Ubuntu 18 LTS, Xilinx 2019.1 tools for a [Pynq v2.5.2](https://github.com/Xilinx/PYNQ/tree/image_v2.5.2) image
+- Ubuntu 18 LTS, Xilinx 2019.1 tools for a [Pynq v2.5.2](https://github.com/Xilinx/PYNQ/tree/image_v2.5.2) image (`image_v2.5` is a bit buggy, see the Crosstool issue below)
 
 ### Ubuntu 18 LTS + 2019.1 tools
+
+#### Minimal instructions to generate an image
+
+Requirements : 
+
+- A board-agnostic image (see http://www.pynq.io/board.html/)
+- A user with `sudo` rights
+
 ```bash
-git clone https://github.com/Xilinx/PYNQ
+git clone https://github.com/pcotret/PYNQ
 cd PYNQ
 git checkout image_v2.5.2
-cd sdbuild
-# Compile for the existing Pynq-Z1
-make BOARDS=Pynq-Z1
+cd sdbuild/scripts
+./setup_host.sh
 ```
+
+Reboot and :
+
+```bash
+cd PYNQ/sdbuild
+make PREBUILT=<agnostic image path>
+```
+
+On a decent VM (4 cores, 4 GB RAM), the whole process took ~2hrs.
+
+![demo](./img/pynq-z1-demo.png)
+
+#### Issues with the building script...
+
 - In order to optimize the overall compilation time for only one board, just delete other board directories in `PYNQ/boards`. This deletion must be pushed in the [PYNQ repository](https://github.com/pcotret/PYNQ/commit/948c9a27b796b14ee4b1812d500564ddfc218934). Otherwise, [build.sh](https://github.com/pcotret/PYNQ/blob/image_v2.5.2/build.sh) will build bitstreams for all boards available.
 ```bash
 # build all bitstreams since they will be included in the sdist
@@ -33,27 +59,42 @@ for b in $boards ; do
 	build_bitstreams "$script_dir/boards" "$b"
 done
 ```
-#### Issues with the building script...
 - Still some errors in the script for building default overlays, microblaze bsp's and binaries...
 > ./build.sh: line 70: cd: bsp_iop_rpi_mb/iop_rpi_mb: No such file or directory :cry:
 
 > xsdk -batch -source build_xsdk.tcl ../Pynq-Z1/base/base.hdf hw_base
+>
 > Starting xsdk. This could take few seconds... done
+>
 > INFO: [Hsi 55-1698] elapsed time for repository loading 0 seconds
+>
 > Creating new BSP bsp_iop_arduino_mb ...
+>
 > /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+>
 > BSP project 'bsp_iop_arduino_mb' created successfully.
+>
 > /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+>
 > Creating new BSP bsp_iop_pmoda_mb ...
+>
 > /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+>
 > BSP project 'bsp_iop_pmoda_mb' created successfully.
+>
 > /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+>
 > Creating new BSP bsp_iop_pmodb_mb ...
+>
 > /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+>
 > BSP project 'bsp_iop_pmodb_mb' created successfully.
+>
 > /opt/Xilinx/SDK/2019.1/gnu/microblaze/lin
+>
 > Building '/bsp_iop_arduino_mb'
-Yes, `bsp_iop_rpi_mb` BSP project isn't generated...
+>
+> Yes, `bsp_iop_rpi_mb` BSP project isn't generated...
 
 Let's look at the difference between `PYNQ/boards/Pynq-Z1/base/base.py` and `PYNQ/boards/Pynq-Z2/base/base.py`. Those files define the base overlay for both boards:
 
@@ -65,8 +106,9 @@ As you can see, Pynq-Z2 has more peripherals (look at `iop ***`, especially the 
 
 And, unfortunately, the `build.sh` script will use Pynq-Z2 overlay for all boards instead of having something more "board-dependent". Two solutions:
 
-- Modify the `build.sh` script to fit only the Pynq-Z1 in my [fork](https://github.com/pcotret/PYNQ).
-- Take some time to make a clever `build.sh` which would generate BSPs for peripherals of a given board (would be a great PR in the main repo).
+- [x] Modify the `build.sh` script to fit only the Pynq-Z1 in my [fork](https://github.com/pcotret/PYNQ).
+
+- [ ] Take some time to make a clever `build.sh` which would generate BSPs for peripherals of a given board (would be a great PR in the main repo).
 
 #### Public key not verified
 ```bash
@@ -77,7 +119,7 @@ Err:1 http://ports.ubuntu.com/ubuntu-ports bionic InRelease
 ```bash
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys the_key
 ```
-#### Issue with `crosstool-ng`
+#### Issue with `crosstool-ng` on the `image_v2.5` branch
 - http://crosstool-ng.github.io/docs/known-issues/
 - https://discuss.pynq.io/t/pynq-2-5-ct-ng-build-error/1267
 
