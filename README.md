@@ -7,7 +7,7 @@
 
 - [x] Step 1 - Play with an existing SD image for the Pynq-Z1
 - [x] Step 2 - Recompile an image for the Pynq-Z1
-- [ ] Step 3 - Play with an existing SD image for the Zedboard
+- [x] Step 3 - Play with an existing SD image for the Zedboard
 - [ ] Step 4 - Recompile an image for the Zedboard
 
 ## Step 1 - Play with an existing SD image for the Pynq-Z1
