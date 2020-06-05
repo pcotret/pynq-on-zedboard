@@ -129,7 +129,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys the_key
 
 ## Step 4 - Recompile an image for the Zedboard
 Equivalent to step 2 with a custom board. The first step is to be able to generate a "minimal" `base` overlay for the Pynq-Z1 before migrating it to the Zedboard (only a matter of pins).
-[x] Removing RGB LEDs
-[ ] Removing audio support
-[ ] Removing HDMI support
-[ ] Removing ChipKit support
+- [x] Removing RGB LEDs
+- [ ] Removing audio support
+- [ ] Removing HDMI support
+- [ ] Removing ChipKit support
