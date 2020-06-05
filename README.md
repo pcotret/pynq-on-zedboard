@@ -133,3 +133,4 @@ Equivalent to step 2 with a custom board. The first step is to be able to genera
 - [x] Removing audio support
 - [ ] Removing HDMI support
 - [ ] Removing ChipKit support
+- [ ] Removing Arduino support
